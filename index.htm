@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body data-ng-controller="MainController">
 
-    
+   <section class="user">
+       <p class="user__name">Username: {{ user.name }}</p>
+       <p class="user__location">Location: {{ user.location }}</p>
+       <img class="user__picture" 
+            src="{{ user.avatar_url }}" 
+            alt="{{ user.name }}" 
+            title="{{ user.name }}"
+            width="230">
+   </section>
     
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="app.js"></script>
-    <script src="MainController.js"></script>
+    <script src="mainController.js"></script>
 </body>
 </html>
