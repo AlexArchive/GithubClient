@@ -10,48 +10,47 @@
 <body ng-controller="mainController">
 
     <section class="error">
-        <p class="error__message">{{ error }}</p>
+        <p>{{ error }}</p>
     </section>
 
     <section class="user">
-        <form class="user__search" ng-submit="search(username)">
-            <input type="search" required placeholder="Username" ng-model="username" />
-            <input type="submit" value="Search" />
-        </form>
-        <p class="user__name">Username: {{ user.name }}</p>
-        <p class="user__location">Location: {{ user.location }}</p>
-        <img class="user__picture" 
-             src="{{ user.avatar_url }}" 
-             alt="{{ user.name }}" 
-             title="{{ user.name }}" 
-             width="80" />
+       
+        <div class="user__search">
+            <form ng-submit="search(username)">
+                <input type="search" required placeholder="Username" ng-model="username" />
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+        
+        <div class="user__profile">
+            <p>Username: {{ user.name }}</p>
+            <p>Location: {{ user.location }}</p>
+            <img src="{{ user.avatar_url }}" alt="{{ user.name }}" title="{{ user.name }}" width="80" />
+            <select ng-model="repoSortOrder">
+                <option value="+name">Name</option>
+                <option value="-stargazers_count">Stars</option>
+                <option value="+language">Language</option>
+            </select>
+            <table>
+                <head>
+                    <tr>
+                        <th>Name</th>
+                        <th>Stars</th>
+                        <th>Language</th>
+                    </tr>
+                </head>
+                <tbody>
+                    <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
+                        <td>{{ repo.name }}</td>
+                        <td>{{ repo.stargazers_count | number}}</td>
+                        <td>{{ repo.language }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
     </section>
-    
-    <section>
-        <select ng-model="repoSortOrder">
-            <option value="+name">Name</option>
-            <option value="-stargazers_count">Stars</option>
-            <option value="+language">Language</option>
-        </select>
-    </section>
-    
-    <table>
 
-        <head>
-            <tr>
-                <th>Name</th>
-                <th>Stars</th>
-                <th>Language</th>
-            </tr>
-        </head>
-        <tbody>
-            <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
-                <td>{{ repo.name }}</td>
-                <td>{{ repo.stargazers_count | number}}</td>
-                <td>{{ repo.language }}</td>
-            </tr>
-        </tbody>
-    </table>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="app.js"></script>
