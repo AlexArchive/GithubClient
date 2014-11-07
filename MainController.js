@@ -1,4 +1,4 @@
-app.controller("mainController", function($scope, $http, $interval) {
+app.controller("mainController", function($scope, $http, $interval, $log) {
 
     function onUserAvailable(response) {
         $scope.user = response.data;
@@ -10,6 +10,7 @@ app.controller("mainController", function($scope, $http, $interval) {
     }
 
     function onError(reason) {
+        $log.error("Unable to fetch data: " + reason);
         $scope.error = "Could not fetch data.";
     };
     
@@ -25,6 +26,7 @@ app.controller("mainController", function($scope, $http, $interval) {
     }
     
     $scope.search = function(username) {
+        $log.info("Searching for: " + username);
         $http.get("https://api.github.com/users/" + username).then(onUserAvailable, onError);
     }
 
