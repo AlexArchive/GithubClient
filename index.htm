@@ -24,9 +24,26 @@
             title="{{ user.name }}"
             width="230" />
    </section>
+   
+   <table>
+       <head>
+           <tr>
+               <th>Name</th>
+               <th>Stars</th>
+               <th>Language</th>
+           </tr>
+       </head>
+       <tbody>
+           <tr ng-repeat="repo in repos">
+               <td>{{ repo.name }}</td>
+               <td>{{ repo.stargazers_count | number}}</td>
+               <td>{{ repo.language }}</td>
+           </tr>
+       </tbody>
+    </table>
     
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="app.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+   <script src="app.js"></script>
     <script src="mainController.js"></script>
 </body>
 </html>
