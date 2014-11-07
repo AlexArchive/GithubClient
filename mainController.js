@@ -24,7 +24,6 @@ app.controller("mainController", function($scope, $http, $interval, $log, $ancho
     }
 
     var countdownInterval = null;
-
     function startCountdown() {
         countdownInterval = $interval(decrementCountdown, 1000, $scope.countdown);
     }
@@ -39,7 +38,7 @@ app.controller("mainController", function($scope, $http, $interval, $log, $ancho
 
     }
 
-    $scope.username = "Angular";
+    $scope.username = "Mavamaarten";
     $scope.repoSortOrder = "-stargazers_count"
     $scope.countdown = 5;
     startCountdown();
