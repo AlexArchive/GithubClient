@@ -7,6 +7,10 @@
 </head>
 <body data-ng-controller="MainController">
 
+    <section class="error">
+        <p class="error__message">{{ error }}</p>
+    </section>
+      
    <section class="user">
        <p class="user__name">Username: {{ user.name }}</p>
        <p class="user__location">Location: {{ user.location }}</p>

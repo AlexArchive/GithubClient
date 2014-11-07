@@ -1,9 +1,13 @@
 app.controller("MainController", function ($scope, $http) {
     
-    var onUserAvailable = function(response) {
+    function onUserAvailable(response) {
         $scope.user = response.data;
-    }
+    };
     
-    $http.get("https://api.github.com/users/byteblast").then(onUserAvailable);
+    function onError(reason) {
+        $scope.error = "Could not fetch user at this time.";  
+    };
+    
+    $http.get("https://api.github.com/users/byteblast").then(onUserAvailable, onError);
     
 });
