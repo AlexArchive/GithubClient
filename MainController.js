@@ -16,5 +16,5 @@ app.controller("mainController", function($scope, $http) {
     $scope.search = function(username) {
         $http.get("https://api.github.com/users/" + username).then(onUserAvailable, onError);
     }
-
+    $scope.repoSortOrder = "-stargazers_count"
 });

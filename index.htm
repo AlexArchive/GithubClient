@@ -26,7 +26,15 @@
              title="{{ user.name }}" 
              width="80" />
     </section>
-
+    
+    <section>
+        <select ng-model="repoSortOrder">
+            <option value="+name">Name</option>
+            <option value="-stargazers_count">Stars</option>
+            <option value="+language">Language</option>
+        </select>
+    </section>
+    
     <table>
 
         <head>
@@ -37,7 +45,7 @@
             </tr>
         </head>
         <tbody>
-            <tr ng-repeat="repo in repos">
+            <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
                 <td>{{ repo.name }}</td>
                 <td>{{ repo.stargazers_count | number}}</td>
                 <td>{{ repo.language }}</td>
