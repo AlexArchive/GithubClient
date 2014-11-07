@@ -22,7 +22,7 @@
             </form>
         </div>
         
-        <div class="user__profile">
+        <div class="user__profile" ng-show="user">
             <p>Username: {{ user.name }}</p>
             <p>Location: {{ user.location }}</p>
             <img src="{{ user.avatar_url }}" alt="{{ user.name }}" title="{{ user.name }}" width="80" />
