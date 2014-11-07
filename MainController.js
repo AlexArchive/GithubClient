@@ -1,4 +1,4 @@
-app.controller("MainController", function ($scope, $http) {
+app.controller("mainController", function ($scope, $http) {
     
     function onUserAvailable(response) {
         $scope.user = response.data;
@@ -8,6 +8,8 @@ app.controller("MainController", function ($scope, $http) {
         $scope.error = "Could not fetch user at this time.";  
     };
     
-    $http.get("https://api.github.com/users/byteblast").then(onUserAvailable, onError);
+    $scope.search = function(username) {
+        $http.get("https://api.github.com/users/" + username).then(onUserAvailable, onError);
+    }
     
 });

@@ -2,23 +2,27 @@
 <html lang="en" data-ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title>Angular</title>
+    <title>Angular-GH-Client</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-ng-controller="MainController">
+<body data-ng-controller="mainController">
 
     <section class="error">
         <p class="error__message">{{ error }}</p>
     </section>
-      
+    
    <section class="user">
+       <form action="" class="user__search" data-ng-submit="search(username)">
+           <input type="search" required placeholder="Username" data-ng-model="username"/>
+           <input type="submit" value="Search"/>
+       </form>
        <p class="user__name">Username: {{ user.name }}</p>
        <p class="user__location">Location: {{ user.location }}</p>
        <img class="user__picture" 
             src="{{ user.avatar_url }}" 
             alt="{{ user.name }}" 
             title="{{ user.name }}"
-            width="230">
+            width="230" />
    </section>
     
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
