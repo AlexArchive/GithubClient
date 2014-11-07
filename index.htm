@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="app">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>Angular-GH-Client</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-ng-controller="mainController">
+<body ng-controller="mainController">
 
     <section class="error">
         <p class="error__message">{{ error }}</p>
     </section>
     
    <section class="user">
-       <form action="" class="user__search" data-ng-submit="search(username)">
-           <input type="search" required placeholder="Username" data-ng-model="username"/>
+       <form class="user__search" ng-submit="search(username)">
+           <input type="search" required placeholder="Username" ng-model="username"/>
            <input type="submit" value="Search"/>
        </form>
        <p class="user__name">Username: {{ user.name }}</p>
