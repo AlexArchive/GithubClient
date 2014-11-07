@@ -1,4 +1,4 @@
-app.controller("mainController", function($scope, $http, $interval, $log) {
+app.controller("mainController", function($scope, $http, $interval, $log, $anchorScroll, $location) {
 
     function onUserAvailable(response) {
         $scope.user = response.data;
@@ -7,25 +7,28 @@ app.controller("mainController", function($scope, $http, $interval, $log) {
 
     function onReposAvailable(response) {
         $scope.repos = response.data;
+        $location.hash("user__profile");
+        $anchorScroll();
     }
 
     function onError(reason) {
         $log.error("Unable to fetch data: " + reason);
         $scope.error = "Could not fetch data.";
     };
-    
+
     function decrementCountdown() {
         $scope.countdown -= 1;
         if ($scope.countdown == 0) {
             $scope.search($scope.username);
         }
     }
-    
+
     var countdownInterval = null;
+
     function startCountdown() {
         countdownInterval = $interval(decrementCountdown, 1000, $scope.countdown);
     }
-    
+
     $scope.search = function(username) {
         $log.info("Searching for: " + username);
         $http.get("https://api.github.com/users/" + username).then(onUserAvailable, onError);
@@ -33,6 +36,7 @@ app.controller("mainController", function($scope, $http, $interval, $log) {
             $interval.cancel(countdownInterval);
             $scope.countdown = null;
         }
+
     }
 
     $scope.username = "Angular";
