@@ -26,7 +26,7 @@
         <div class="user__profile" ng-show="user">
             <p>Username: {{ user.name }}</p>
             <p>Location: {{ user.location }}</p>
-            <img src="{{ user.avatar_url }}" alt="{{ user.name }}" title="{{ user.name }}" width="80" />
+            <img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" title="{{ user.name }}" width="80" />
             <select ng-model="repoSortOrder">
                 <option value="+name">Name</option>
                 <option value="-stargazers_count">Stars</option>
