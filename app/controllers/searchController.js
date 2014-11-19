@@ -22,6 +22,6 @@ app.controller("searchController", function($scope, $interval, $log, $location) 
     }
 
     $scope.username = "ByteBlast";
-    $scope.countdown = 5;
-    startCountdown();
+    $scope.countdown = 10;
+	startCountdown();
 });

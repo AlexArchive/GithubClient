@@ -4,12 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular-GH-Client</title>
+    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body ng-cloak>
-    <h1>Angular-GH-Client</h1>
-    <div ng-view></div>
+<body>
+   
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">Angular-GH-Client</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+       <div ng-view></div>
+    </div>
     
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>

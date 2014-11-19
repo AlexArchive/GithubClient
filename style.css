@@ -5,3 +5,15 @@ body {
 .error {
     background-color: tomato;
 }
+
+.user__picture {
+	margin-bottom: 20px;
+}
+
+.jumbotron p {
+	font-size: 14px;
+}
+
+.sort__options {
+	margin-bottom: 20px;	
+}

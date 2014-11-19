@@ -1,29 +1,61 @@
 <section class="user">
-    <div class="user__profile" id="user__profile" ng-show="user">
-        <p>Username: {{ user.name }}</p>
-        <p>Location: {{ user.location }}</p>
-        <img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" title="{{ user.name }}" width="80" />
-        <select ng-model="repoSortOrder">
-            <option value="+name">Name</option>
-            <option value="-stargazers_count">Stars</option>
-            <option value="+language">Language</option>
-        </select>
-        <table>
-            <head>
-                <tr>
-                    <th>Name</th>
-                    <th>Stars</th>
-                    <th>Language</th>
-                </tr>
-            </head>
-            <tbody>
-                <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
-                    <td>{{ repo.name }}</td>
-                    <td>{{ repo.stargazers_count | number}}</td>
-                    <td>{{ repo.language }}</td>
-                </tr>
-            </tbody>
-        </table>
+
+
+        <div class="col-md-4 jumbotron">
+            <div class="user" ng-show="user">
+                <img class="user__picture img-circle center-block" ng-src="{{ user.avatar_url }}" class="img-circle" alt="{{ user.name }}" title="{{ user.name }}" width="150" />
+				<h2><a ng-href="{{ user.html_url }}">{{ username }}</a></h2>
+                <p class="text-normal">{{ user.location }}</p>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Followers</td>
+                            <td><a ng-href="{{ user.html_url }}/followers">{{ user.followers }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Following</td>
+							<td><a ng-href="{{ user.html_url }}/following">{{ user.following }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Repos</td>
+                            <td>{{ user.public_repos }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <a href="#/main" class="btn btn-default btn-xs">Back to search</a> 
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="sort">
+                <label>Sort By:</label>
+                <select class="form-control sort__options" ng-model="repoSortOrder">
+                    <option value="+name">Name</option>
+                    <option value="-stargazers_count">Stars</option>
+                    <option value="+language">Language</option>
+                </select>
+            </div>
+
+            <table class="table table-bordered table-condensed table-hover">
+
+                <head>
+                    <tr>
+                        <th>Name</th>
+                        <th>Stars</th>
+                        <th>Language</th>
+                    </tr>
+                </head>
+                <tbody>
+                    <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
+                        <td><a ng-href="{{ repo.html_url }}">{{ repo.name }}</a></td>
+						<td><a ng-href="{{ repo.html_url }}/stargazers">{{ repo.stargazers_count | number}}</a></td>
+                        <td>{{ repo.language }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
-    <a href="#/main">Back to search</a>    
+
+
 </section>
